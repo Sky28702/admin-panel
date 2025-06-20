@@ -10,7 +10,7 @@ const SignupForm = () => {
     // await console.log(data);
     let sik = await signUp(data);
 
-    console.log(data);
+    console.log(sik);
   }
 
   return (

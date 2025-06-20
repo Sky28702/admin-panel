@@ -18,6 +18,10 @@ async function signUp(data) {
 
   await user.save();
 
-  return user;
+  return {
+    userName: data.userName,
+    email: data.email,
+    password: hashedPassword,
+  };
 }
 export default signUp;
