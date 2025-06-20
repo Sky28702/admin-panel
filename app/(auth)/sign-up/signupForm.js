@@ -1,7 +1,6 @@
 "use client";
 import signUp from "@/app/backend/actions/signup";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 
 const SignupForm = () => {
   const { register, handleSubmit } = useForm();
