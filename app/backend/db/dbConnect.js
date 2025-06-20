@@ -1,6 +1,4 @@
-"use server";
 import mongoose from "mongoose";
-
 async function connectdb() {
   try {
     const db = await mongoose.connect(

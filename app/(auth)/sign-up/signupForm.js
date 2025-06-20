@@ -1,14 +1,16 @@
 "use client";
-import registerUser from "@/app/backend/actions/signup";
+import signUp from "@/app/backend/actions/signup";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import User from "@/app/backend/models/userModel";
 
 const SignupForm = () => {
   const { register, handleSubmit } = useForm();
   async function submit(data) {
     // await console.log(data);
-    let sik = await registerUser(data);
-    console.log(sik);
+    let sik = await signUp(data);
+
+    console.log(data);
   }
 
   return (
