@@ -1,5 +1,3 @@
-import formLogin from "@/app/backend/actions/login";
-
 const Login = () => {
   return (
     <section>

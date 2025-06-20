@@ -1,16 +1,23 @@
 "use server";
-import Sign from "@/app/backend/models/signup";
+import bcrypt from "bcryptjs";
+import User from "@/app/backend/models/userModel";
 import dbConnect from "@/app/backend/db/dbConnect";
 
-async function formSign(data) {
+async function signUp(data) {
   await dbConnect();
-  const sign = new Sign({
+  const hashedPassword = await bcrypt.hash(data.password, 10);
+  const isEmailAlreadyExist = await User.findOne({ email });
+  if (isEmailAlreadyExist) {
+    throw new Error("User already exists");
+  }
+  const user = new User({
     userName: data.userName,
     email: data.email,
-    password: data.password,
+    password: hashedPassword,
   });
-  await sign.save();
 
-  console.log(sign);
+  await user.save();
+
+  console.log(user);
 }
-export default formSign;
+export default signUp;
