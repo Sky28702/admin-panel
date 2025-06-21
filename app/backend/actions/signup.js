@@ -6,10 +6,11 @@ import dbConnect from "@/app/backend/db/dbConnect";
 async function signUp(data) {
   await dbConnect();
   const hashedPassword = await bcrypt.hash(data.password, 10);
-  // const isEmailAlreadyExist = await signUp.findOne({ email });
-  // if (isEmailAlreadyExist) {
-  // throw new Error("User already exists");
-  // }
+  const isEmailAlreadyExist = await User.findOne({ email: data.email });
+  if (isEmailAlreadyExist) {
+    throw new Error("User already exists");
+  }
+
   const user = new User({
     userName: data.userName,
     email: data.email,
