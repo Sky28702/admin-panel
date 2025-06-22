@@ -15,6 +15,16 @@ async function signUp(data) {
     // throw new Error("User already exists");
   }
 
+  const isUserNameAlreadyExist = await User.findOne({
+    userName: data.userName,
+  });
+  if (isUserNameAlreadyExist) {
+    return {
+      success: false,
+      message: "User already exist !",
+    };
+    // throw new Error("User already exists");
+  }
   const user = new User({
     userName: data.userName,
     email: data.email,
@@ -25,7 +35,7 @@ async function signUp(data) {
 
   return {
     success: true,
-    data: user,
+
     message: "Registration successfull !",
   };
 }
