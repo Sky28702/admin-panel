@@ -8,7 +8,11 @@ async function signUp(data) {
   const hashedPassword = await bcrypt.hash(data.password, 10);
   const isEmailAlreadyExist = await User.findOne({ email: data.email });
   if (isEmailAlreadyExist) {
-    throw new Error("User already exists");
+    return {
+      success: false,
+      message: "User already exist !",
+    };
+    // throw new Error("User already exists");
   }
 
   const user = new User({
@@ -20,9 +24,9 @@ async function signUp(data) {
   await user.save();
 
   return {
-    userName: data.userName,
-    email: data.email,
-    password: hashedPassword,
+    success: true,
+    data: user,
+    message: "Registration successfull !",
   };
 }
 export default signUp;
