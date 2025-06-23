@@ -1,5 +1,4 @@
 import SignupForm from "@/app/(auth)/sign-up/signupForm";
-import signUp from "@/app/backend/actions/signup";
 
 import Link from "next/link";
 const Signup = () => {
@@ -20,7 +19,6 @@ const Signup = () => {
             </span>
           </Link>
         </p>
-        <p className="text-red-300 text-enter"></p>
       </section>
     </>
   );
