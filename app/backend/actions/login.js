@@ -13,6 +13,16 @@ async function logIn(data) {
       message: "Incorrect credintals",
     };
   }
+
+  const isPasswordexist = await User.findOne({
+    password: data.password,
+  });
+  if (!isUserexist) {
+    return {
+      success: false,
+      message: "Incorrect credintals",
+    };
+  }
 }
 
 export default logIn;
