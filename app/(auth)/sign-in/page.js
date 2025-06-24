@@ -18,6 +18,7 @@ const Login = () => {
     console.log(result.message);
     setError(!result.success);
     setErrorMessage(result.message);
+    console.log(result);
   }
   return (
     <section>
