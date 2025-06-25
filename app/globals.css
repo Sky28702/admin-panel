@@ -9,6 +9,5 @@
 body {
   font-family: var(--font-rubik);
 
-  max-width: 1024px;
   margin: 0 auto;
 }
