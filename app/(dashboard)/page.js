@@ -1,34 +1,55 @@
 // import filename from "@/components/filename";
+import { IconDashboard } from "@tabler/icons-react";
+import { IconUser } from "@tabler/icons-react";
+import { IconShoppingCartCopy } from "@tabler/icons-react";
+import { IconUserCircle } from "@tabler/icons-react";
+import Link from "next/link";
 
 const Home = () => {
   return (
-    <div className="bg-blue-50 min-h-screen">
+    <div className="  min-h-screen border boder-none border-white  w-80 shadow shadow-slate-500">
       <section>
-        <div className=" flex flex-col [&>p]:hover:cursor-pointer [&>p]:hover:bg-blue-200 [&>p]:items-center [&>p]:w-50 border boder-none border-white h-full w-80 shadow shadow-slate-500">
-          <h1 className="text-blue-600 font-bold text-3xl pl-4 pt-8">Title</h1>
-          <p className="pl-4 pt-2 font-normal text-xl mt-6">
-            <i className="fa-solid fa-gauge"></i> &nbsp; Dashboard
-          </p>
+        <div className=" flex flex-col pl-4 [&_span]:pb-10">
+          <h1 class="text-black font-bold text-3xl py-6 mb-6">Admin</h1>
+          <span>
+            {" "}
+            <Link
+              href="/dashboard"
+              className="flex items-center font-normal text-xl "
+            >
+              <IconDashboard stroke={2} />
+              &nbsp; Dashboard
+            </Link>
+          </span>
 
-          <p className="pl-4 pt-2 font-normal text-xl mt-6">
-            <i class="fa-solid fa-server"></i> &nbsp; Data
-          </p>
+          <span>
+            <Link
+              href="/product"
+              className="flex items-center font-normal text-xl "
+            >
+              <IconShoppingCartCopy stroke={1} />
+              &nbsp; Products
+            </Link>
+          </span>
 
-          <p className="pl-4 pt-2 font-normal text-xl mt-6">
-            <i class="fa-solid fa-message"></i> &nbsp; Message
-          </p>
+          <span>
+            <Link
+              href="/user"
+              className="flex items-center  font-normal text-xl "
+            >
+              <IconUser stroke={2} />
+              &nbsp; Users
+            </Link>
+          </span>
 
-          <p className="pl-4 pt-2 font-normal text-xl mt-6">
-            <i class="fa-solid fa-bell"></i> &nbsp; Notification
-          </p>
-
-          <p className="pl-4 pt-2 font-normal text-xl mt-6">
-            <i class="fa-solid fa-gear"></i> &nbsp; Setting
-          </p>
-
-          <p className="relative bottom-0 mt-132  p-4">
-            <i class="fa-solid fa-user"></i> &nbsp; Profile
-          </p>
+          <span>
+            <Link
+              href="/profile"
+              className="flex items-center  font-normal text-xl "
+            >
+              <IconUserCircle stroke={1} /> &nbsp; Profile
+            </Link>
+          </span>
         </div>
       </section>
     </div>
