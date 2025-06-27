@@ -27,7 +27,7 @@ const Home = () => {
               href="/product"
               className="flex items-center font-normal text-xl "
             >
-              <IconShoppingCartCopy stroke={1} />
+              <IconShoppingCartCopy stroke={2} />
               &nbsp; Products
             </Link>
           </span>
