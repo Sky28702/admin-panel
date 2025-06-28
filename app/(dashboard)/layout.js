@@ -51,7 +51,7 @@ const layout = ({ children }) => {
           </div>
         </section>
       </div>
-      <div className="text-center pl-54 pt-16">{children}</div>
+      <div className=" pl-36 pt-4  w-full bg-neutral-50">{children}</div>
     </div>
   );
 };
