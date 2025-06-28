@@ -1,5 +1,3 @@
-// import filename from "@/components/filename";
-
 const Users = () => {
   return (
     <div>
