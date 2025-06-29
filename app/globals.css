@@ -11,3 +11,9 @@ body {
 
   margin: 0 auto;
 }
+
+@layer utilities {
+  .nav-list {
+    @apply bg-blue;
+  }
+}
