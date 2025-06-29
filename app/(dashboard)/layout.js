@@ -13,7 +13,10 @@ const layout = ({ children }) => {
             <h1 class="text-black font-bold text-3xl py-6 mb-6">Admin</h1>
             <span>
               {" "}
-              <Link href="/" className="flex items-center font-normal text-xl ">
+              <Link
+                href="/"
+                className="flex items-center font-normal text-xl bg-blue-600 flex-center whitespace-nowrap rounded-[4px] p-2 text-white"
+              >
                 <IconDashboard stroke={2} />
                 &nbsp; Dashboard
               </Link>
