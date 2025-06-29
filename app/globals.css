@@ -12,8 +12,11 @@ body {
   margin: 0 auto;
 }
 
-@layer utilities {
+@layer components {
   .nav-list {
-    @apply bg-blue;
+    @apply bg-transparent flex items-center whitespace-nowrap rounded-[4px] p-2 text-black transition-all;
+  }
+  .active-nav {
+    @apply bg-blue-600  text-white transition-all;
   }
 }
