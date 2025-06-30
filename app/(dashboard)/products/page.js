@@ -9,11 +9,8 @@ const Products = () => {
     <section className="">
       <div className="[&_td]:text-left text-left">
         <h1 className="text-3xl mb-2 font-medium">Products</h1>
-        <button
-          href="/create"
-          className="mb-8 bg-blue-600 text-white px-4 py-2 rounded-[4px]"
-        >
-          + Add Article
+        <button className="mb-8 bg-blue-600 text-white px-4 py-2 rounded-[4px]">
+          <Link href="/products/create">+ Add Article</Link>
         </button>
         <table className=" bg-white border border-white  [&_th]:px-8 [&_th]:py-2 [&_td]:p-6 [&_td]:pr-30 [&_th]:text-slate-400  [&_td]:text-center  shadow shadow-slate-300 rounded-[4px]">
           <tr>

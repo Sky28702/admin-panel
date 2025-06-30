@@ -9,8 +9,11 @@ import Link from "next/link";
 const layout = ({ children }) => {
   const pathNmae = usePathname();
 
-  const getClass = (path) =>
-    `nav-list ${pathNmae === path ? "active-nav" : ""}`;
+  const getClass = (path) => {
+    const pathSegments = pathNmae.split("/");
+    const basePath = `/${pathSegments[1]}`;
+    return `nav-list ${basePath === path ? "active-nav" : ""}`;
+  };
 
   return (
     <div className="flex flex-row ">
