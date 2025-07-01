@@ -16,7 +16,8 @@ const layout = ({ children }) => {
   };
 
   return (
-    <div className="flex flex-row ">
+    <div className="flex flex-row justify-center">
+      {/* have to check it  */}
       <div className="  min-h-screen border boder-none border-white  w-80 shadow shadow-slate-500 ">
         <section>
           <div className=" flex flex-col pl-4 [&_span]:pb-10 pr-4">
