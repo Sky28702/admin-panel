@@ -1,16 +1,14 @@
 "use server";
-
 import Product from "@/app/backend/models/product";
 import dbConnect from "@/app/backend/db/dbConnect";
 
-async function product(data) {
+async function createFunction(data) {
   await dbConnect();
 
   const product = new Product({
     productName: data.productName,
     quantity: data.quantity,
     price: data.price,
-    image: data.image,
   });
 
   await product.save();
@@ -21,4 +19,15 @@ async function product(data) {
     message: "Product added successfully !",
   };
 }
-export default product;
+async function allProducts() {
+  const allDataProduct = await Product.find({}).sort({ createdAt: -1 });
+  return allDataProduct;
+}
+
+async function deleteItem(id) {
+  await Product.findByIdAndDelete(id);
+  console.log(`Item ${id} deleted`);
+  return deleteItem;
+}
+
+export { createFunction, allProducts, deleteItem };

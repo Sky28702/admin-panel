@@ -1,5 +1,5 @@
 "use client";
-import product from "@/app/backend/actions/productCreate";
+import { createFunction } from "@/app/backend/actions/productCreate";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -15,7 +15,7 @@ const createProduct = () => {
 
   async function submit(data) {
     // await console.log(data);
-    let result = await product(data);
+    let result = await createFunction(data);
     console.log(data);
     console.log(result);
   }

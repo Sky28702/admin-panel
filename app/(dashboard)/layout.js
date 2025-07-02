@@ -21,7 +21,7 @@ const layout = ({ children }) => {
       <div className="  min-h-screen border boder-none border-white  w-80 shadow shadow-slate-500 ">
         <section>
           <div className=" flex flex-col pl-4 [&_span]:pb-10 pr-4">
-            <h1 class="text-black font-bold text-3xl py-6 mb-6">Admin</h1>
+            <h1 className="text-black font-bold text-3xl py-6 mb-6">Admin</h1>
             <span>
               {" "}
               <Link href="/" className={getClass("/")}>
