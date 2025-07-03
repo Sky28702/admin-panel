@@ -29,7 +29,7 @@ async function Products() {
                 id={p.id}
                 productName={p.productName}
                 quantity={p.quantity}
-                price={"Rs " + p.price}
+                price={p.price}
               />
             ))}
           </tbody>

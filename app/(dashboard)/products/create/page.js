@@ -39,7 +39,7 @@ const createProduct = () => {
       >
         <div className="flex flex-col ">
           <div className="mb-8">
-            <lable className="mb-4 ">Product Name:</lable>
+            <label className="mb-4 ">Product Name:</label>
             <input
               type="text"
               placeholder="Product"
@@ -61,7 +61,7 @@ const createProduct = () => {
           </div>
 
           <div>
-            <lable className="mb-4 ">Quantity:</lable>
+            <label className="mb-4 ">Quantity:</label>
             <input
               type="number"
               placeholder="Quantity"
@@ -71,14 +71,14 @@ const createProduct = () => {
           </div>
 
           <div>
-            <lable className="mb-4 ">Price:</lable>
+            <label className="mb-4 ">Price:</label>
             <input
               type="number"
               placeholder="$ Price"
               className="w-320 h-10 shadow shadow-slate-300 border border-slate-200 p-4 mb-8"
               {...register("price")}
             ></input>
-            <lable className="mb-4 ">Image:</lable>
+            <label className="mb-4 ">Image:</label>
             <input
               type="file"
               className="shadow shadow-slate-300 border border-slate-200 p-2 w-320 cursor-pointer mb-8 "
