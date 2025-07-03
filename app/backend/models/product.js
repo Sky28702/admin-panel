@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
   {
-    productName: { type: String },
-    quantity: { type: Number },
-    price: { type: Number },
+    productName: { type: String, required: true, minlength: 3 },
+    quantity: { type: Number, required: true },
+    price: { type: Number, required: true },
   },
   { timestamps: { createdAt: true, updatedAt: true } }
 );

@@ -39,4 +39,10 @@ async function signUp(data) {
     message: "Registration successfull !",
   };
 }
-export default signUp;
+
+async function allUsers() {
+  const allDataUsers = await User.find({}).sort({ createdAt: -1 });
+  return allDataUsers;
+}
+
+export { signUp, allUsers };

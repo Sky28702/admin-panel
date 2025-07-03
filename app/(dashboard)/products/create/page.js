@@ -2,9 +2,16 @@
 import { createFunction } from "@/app/backend/actions/productCreate";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 
 const createProduct = () => {
-  const { register, handleSubmit, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    formState: { errors },
+  } = useForm();
   const [selectedImage, setSelectedImage] = useState();
 
   const handleImageChange = (event) => {
@@ -18,46 +25,69 @@ const createProduct = () => {
     let result = await createFunction(data);
     console.log(data);
     console.log(result);
+    toast.success("Product created successfully!");
+    reset();
   }
 
   return (
     <>
+      <Toaster />
       <h1 className=" text-2xl mb-2 mt-10 font-medium">Add Products</h1>
       <form
-        className=" [&_input]:mb-8 shadow shadow-neutral-300 w-340 p-8 bg-white"
+        className="  shadow shadow-neutral-300 w-340 p-8 bg-white"
         onSubmit={handleSubmit(submit)}
       >
         <div className="flex flex-col ">
-          <span className="mb-4 ">Product Name:</span>
-          <input
-            type="text"
-            placeholder="Product"
-            className="w-320 h-10 shadow shadow-slate-300 border border-slate-200 p-4"
-            {...register("productName")}
-          ></input>
-          <span className="mb-4 ">Quantity:</span>
-          <input
-            type="number"
-            placeholder="Quantity"
-            className="w-320 h-10 shadow shadow-slate-300 border border-slate-200 p-4"
-            {...register("quantity")}
-          ></input>
-          <span className="mb-4 ">Price:</span>
-          <input
-            type="number"
-            placeholder="$ Price"
-            className="w-320 h-10 shadow shadow-slate-300 border border-slate-200 p-4"
-            {...register("price")}
-          ></input>
-          <span className="mb-4 ">Image:</span>
-          <input
-            type="file"
-            className="shadow shadow-slate-300 border border-slate-200 p-2 w-320 cursor-pointer "
-            onChange={handleImageChange}
-          ></input>
+          <div className="mb-8">
+            <lable className="mb-4 ">Product Name:</lable>
+            <input
+              type="text"
+              placeholder="Product"
+              className="w-320 h-10 shadow shadow-slate-300 border border-slate-200 p-4 "
+              {...register("productName", {
+                required: "Product Name is required",
+                minLength: {
+                  value: 3,
+                  message: " Product Name must be at least 3 characters",
+                },
+              })}
+            >
+              {/* // toast.error("This didn't work.") */}
+            </input>
+
+            {errors.productName && (
+              <p className="text-red-500 mt-2">{errors.productName.message}</p>
+            )}
+          </div>
+
+          <div>
+            <lable className="mb-4 ">Quantity:</lable>
+            <input
+              type="number"
+              placeholder="Quantity"
+              className="w-320 h-10 shadow shadow-slate-300 border border-slate-200 p-4 mb-8"
+              {...register("quantity")}
+            ></input>
+          </div>
+
+          <div>
+            <lable className="mb-4 ">Price:</lable>
+            <input
+              type="number"
+              placeholder="$ Price"
+              className="w-320 h-10 shadow shadow-slate-300 border border-slate-200 p-4 mb-8"
+              {...register("price")}
+            ></input>
+            <lable className="mb-4 ">Image:</lable>
+            <input
+              type="file"
+              className="shadow shadow-slate-300 border border-slate-200 p-2 w-320 cursor-pointer mb-8 "
+              onChange={handleImageChange}
+            ></input>
+          </div>
         </div>
 
-        <button className="bg-blue-600 text-white py-2 px-4 rounded-[4px]">
+        <button className="bg-blue-600 text-white py-2 px-4 rounded-[4px] hover:cursor-pointer">
           Create
         </button>
       </form>

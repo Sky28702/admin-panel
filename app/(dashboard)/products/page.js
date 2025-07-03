@@ -1,8 +1,8 @@
 "use server";
 import Link from "next/link";
 import { allProducts } from "@/app/backend/actions/productCreate";
-import Buttons from "@/components/buttons";
 
+import TableRow from "@/components/TableRow";
 async function Products() {
   const allDataProduct = await allProducts();
   return (
@@ -24,14 +24,13 @@ async function Products() {
 
           <tbody className="[&_tr]:hover:bg-blue-100 [&_tr]:odd:bg-slate-100">
             {allDataProduct.map((p) => (
-              <tr key={p._id}>
-                <td>{p.productName}</td>
-                <td>{p.quantity}</td>
-                <td>{"Rs " + p.price}</td>
-                <td className="flex flex-row text-indigo-500 gap-16">
-                  <Buttons id={p._id} />
-                </td>
-              </tr>
+              <TableRow
+                key={p.id}
+                id={p.id}
+                productName={p.productName}
+                quantity={p.quantity}
+                price={"Rs " + p.price}
+              />
             ))}
           </tbody>
         </table>

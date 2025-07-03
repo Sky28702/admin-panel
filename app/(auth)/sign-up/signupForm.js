@@ -1,5 +1,5 @@
 "use client";
-import signUp from "@/app/backend/actions/signup";
+import { signUp } from "@/app/backend/actions/signup";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
