@@ -38,8 +38,9 @@ function TableRow(props) {
   }
 
   const handleDelete = async () => {
-    deleteItem(props.id);
-    toast.success("Item Deleted");
+    await deleteItem(props.id);
+    await toast.success("Item Deleted");
+    location.reload();
   };
 
   return (
