@@ -25,10 +25,15 @@ async function allProducts() {
   return allDataProduct;
 }
 
+async function preViewProducts(id) {
+  const product = await Product.findById(id);
+  return product;
+}
+
 async function deleteItem(id) {
   await Product.findByIdAndDelete(id);
   console.log(`Item ${id} deleted`);
   return deleteItem;
 }
 
-export { createFunction, allProducts, deleteItem };
+export { createFunction, allProducts, deleteItem, preViewProducts };
