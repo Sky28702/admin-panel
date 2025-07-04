@@ -40,7 +40,6 @@ function TableRow(props) {
   const handleDelete = async () => {
     await deleteItem(props.id);
     await toast.success("Item Deleted");
-    location.reload();
   };
 
   return (
