@@ -45,57 +45,60 @@ function TableRow(props) {
   return (
     <>
       <Toaster />
-      <tr>
-        <td>{props.productName}</td>
-        <td>{props.quantity}</td>
-        <td>{"Rs " + props.price}</td>
 
-        <td className="flex flex-row text-indigo-500 gap-16">
-          {" "}
-          <button className="flex hover:cursor-pointer">
-            <IconEye stroke={2} />
-            <Link href={"products/view/" + props.id}> Preview</Link>
-          </button>
-          <button href="/edit" className="flex hover:cursor-pointer">
-            <IconEdit stroke={2} />
-            Edit
-          </button>
-          <button onClick={openModal} className="flex hover:cursor-pointer">
-            <IconTrash stroke={2} />
-            Delete
-          </button>
-          <Modal
-            isOpen={modalIsOpen}
-            onAfterOpen={afterOpenModal}
-            onRequestClose={closeModal}
-            style={customStyles}
-          >
-            <p className="text-3xl pt-10 mb-6 text-center">Are you sure?</p>
-            <p className=" mb-8 w-[400px] text-center text-slate-500">
-              Do you really want to delete these records? This process can't be
-              undone!
-            </p>
-            <div className="text-center">
-              {" "}
-              <button
-                onClick={() => {
-                  handleDelete();
-                  closeModal();
-                }}
-                className="bg-red-400 rounded-[4px] px-8 py-2 text-white hover:cursor-pointer  mr-[20px]"
-              >
-                Delete
-              </button>
-              <button
-                onClick={closeModal}
-                className="bg-slate-300 rounded-[4px] px-8 py-2 text-white hover:cursor-pointer mb-10 "
-              >
-                Cancle
-              </button>
-            </div>
-          </Modal>
-        </td>
-      </tr>
+      <tbody className="[&_tr]:hover:bg-blue-100 [&_tr]:even:bg-slate-100">
+        <tr>
+          <td>{props.productName}</td>
+          <td>{props.quantity}</td>
+          <td>{"Rs " + props.price}</td>
+
+          <td className="flex flex-row text-indigo-500 gap-16">
+            {" "}
+            <button className="flex hover:cursor-pointer">
+              <IconEye stroke={2} />
+              <Link href={"products/view/" + props.id}> Preview</Link>
+            </button>
+            <button href="/edit" className="flex hover:cursor-pointer">
+              <IconEdit stroke={2} />
+              Edit
+            </button>
+            <button onClick={openModal} className="flex hover:cursor-pointer">
+              <IconTrash stroke={2} />
+              Delete
+            </button>
+            <Modal
+              isOpen={modalIsOpen}
+              onAfterOpen={afterOpenModal}
+              onRequestClose={closeModal}
+              style={customStyles}
+            >
+              <p className="text-3xl pt-10 mb-6 text-center">Are you sure?</p>
+              <p className=" mb-8 w-[400px] text-center text-slate-500">
+                Do you really want to delete these records? This process can't
+                be undone!
+              </p>
+              <div className="text-center">
+                {" "}
+                <button
+                  onClick={() => {
+                    handleDelete();
+                    closeModal();
+                  }}
+                  className="bg-red-400 rounded-[4px] px-8 py-2 text-white hover:cursor-pointer  mr-[20px]"
+                >
+                  Delete
+                </button>
+                <button
+                  onClick={closeModal}
+                  className="bg-slate-300 rounded-[4px] px-8 py-2 text-white hover:cursor-pointer mb-10 "
+                >
+                  Cancle
+                </button>
+              </div>
+            </Modal>
+          </td>
+        </tr>
+      </tbody>
     </>
   );
 }

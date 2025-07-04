@@ -22,17 +22,15 @@ async function Products() {
             </tr>
           </thead>
 
-          <tbody className="[&_tr]:hover:bg-blue-100 [&_tr]:odd:bg-slate-100">
-            {allDataProduct.map((p) => (
-              <TableRow
-                key={p.id}
-                id={p.id}
-                productName={p.productName}
-                quantity={p.quantity}
-                price={p.price}
-              />
-            ))}
-          </tbody>
+          {allDataProduct.map((p) => (
+            <TableRow
+              key={p.id}
+              id={p.id}
+              productName={p.productName}
+              quantity={p.quantity}
+              price={p.price}
+            />
+          ))}
         </table>
       </div>
     </section>

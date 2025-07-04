@@ -7,6 +7,7 @@ import { IconTrash } from "@tabler/icons-react";
 import { IconEye } from "@tabler/icons-react";
 import { deleteItem } from "@/app/backend/actions/productCreate";
 import Modal from "react-modal";
+import { redirect } from "next/navigation";
 
 const customStyles = {
   content: {
@@ -40,33 +41,22 @@ function ViewContentProduct(props) {
   const handleDelete = async () => {
     await deleteItem(props.id);
     await toast.success("Item Deleted");
+    redirect("/products");
   };
+
+  console.log(props.previewData);
 
   return (
     <>
       <Toaster />
-      <table className="[&_tr]:border [&_tr]:border-slate-200 bg-white [&_td]:p-4 shadow shadow-slate-300 rounded-[10px] w-320 text-left border-collapse">
+      <table className="[&_tr]:border [&_tr]:border-slate-200 bg-white [&_td]:p-4 shadow shadow-slate-300 rounded-[10px] w-320 text-left border-collapse ">
         <tbody>
-          <tr>
-            <td className="text-1xl font-medium">Title:</td>
-            <td>{props.productName}</td>
-          </tr>
-          <tr>
-            <td className="text-1xl font-medium align-top">Quantity:</td>
-            <td className="pl-10">{props.quantity}</td>
-          </tr>
-          <tr>
-            <td className="text-1xl font-medium">Price:</td>
-            <td className="pl-10">{props.price}</td>
-          </tr>
-          <tr>
-            <td className="text-1xl font-medium">Created:</td>
-            <td className="pl-10">{props.createdAt?.toString()}</td>
-          </tr>
-          <tr>
-            <td className="text-1xl font-medium">Updated:</td>
-            <td className="pl-10">{props.updatedAt?.toString()}</td>
-          </tr>
+          {Object.entries(props.previewData).map(([key, value]) => (
+            <tr key={key}>
+              <td>{key}</td>
+              <td>{value}</td>
+            </tr>
+          ))}
           <tr className="text-1xl font-medium">
             <td>Actions:</td>
 
@@ -96,16 +86,16 @@ function ViewContentProduct(props) {
                   be undone!
                 </p>
                 <div className="text-center">
-                  {" "}
                   <button
-                    onClick={() => {
-                      handleDelete();
-                      closeModal();
+                    onClick={async () => {
+                      await handleDelete();
+                      await closeModal();
                     }}
                     className="bg-red-400 rounded-[4px] px-8 py-2 text-white hover:cursor-pointer  mr-[20px]"
                   >
                     Delete
                   </button>
+
                   <button
                     onClick={closeModal}
                     className="bg-slate-300 rounded-[4px] px-8 py-2 text-white hover:cursor-pointer mb-10 "

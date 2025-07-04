@@ -3,7 +3,7 @@ import ViewContentProduct from "@/components/ViewContentProduct";
 import { preViewProducts } from "@/app/backend/actions/productCreate";
 
 async function ViewProducts({ params }) {
-  const preViewData = await preViewProducts(params.id);
+  const previewData = await preViewProducts(params.id);
 
   return (
     <div className="bg-slate-50">
@@ -14,14 +14,7 @@ async function ViewProducts({ params }) {
         </Link>
       </p>
 
-      <ViewContentProduct
-        id={preViewData.id}
-        productName={preViewData.productName}
-        quantity={preViewData.quantity}
-        price={preViewData.price}
-        createdAt={preViewData.createdAt}
-        updatedAt={preViewData.updatedAt}
-      />
+      <ViewContentProduct previewData={previewData} />
     </div>
   );
 }
