@@ -3,7 +3,8 @@ import ViewContentProduct from "@/components/ViewContentProduct";
 import { preViewProducts } from "@/app/backend/actions/productCreate";
 
 async function ViewProducts({ params }) {
-  const previewData = await preViewProducts(params.id);
+  const productData = await preViewProducts(params.id);
+  const previewData = JSON.parse(JSON.stringify(productData));
 
   return (
     <div className="bg-slate-50">

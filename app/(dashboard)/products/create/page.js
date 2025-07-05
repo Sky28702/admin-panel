@@ -78,13 +78,26 @@ const createProduct = () => {
               className="w-320 h-10 shadow shadow-slate-300 border border-slate-200 p-4 mb-8"
               {...register("price")}
             ></input>
-            <label className="mb-4 ">Image:</label>
-            <input
-              type="file"
-              className="shadow shadow-slate-300 border border-slate-200 p-2 w-320 cursor-pointer mb-8 "
-              onChange={handleImageChange}
-            ></input>
           </div>
+
+          <div className="shadow shadow-slate-300 border border-slate-200 p-2 w-100 cursor-pointer mb-8 h-auto">
+            <img
+              src={
+                selectedImage
+                  ? URL.createObjectURL(selectedImage)
+                  : "https://media.istockphoto.com/id/1248723171/vector/camera-photo-upload-icon-on-isolated-white-background-eps-10-vector.jpg?s=612x612&w=0&k=20&c=e-OBJ2jbB-W_vfEwNCip4PW4DqhHGXYMtC3K_mzOac0="
+              }
+              alt="Preview"
+              className="w-full h-auto object-contain max-h-60"
+            />
+          </div>
+
+          <label className="mb-4 ">Image:</label>
+          <input
+            type="file"
+            className="shadow shadow-slate-300 border border-slate-200 p-2 w-320 cursor-pointer mb-8 "
+            onChange={handleImageChange}
+          ></input>
         </div>
 
         <button className="bg-blue-600 text-white py-2 px-4 rounded-[4px] hover:cursor-pointer">

@@ -53,7 +53,7 @@ function ViewContentProduct(props) {
         <tbody>
           {Object.entries(props.previewData).map(([key, value]) => (
             <tr key={key}>
-              <td>{key}</td>
+              <td className="text-1xl font-medium">{key}</td>
               <td>{value}</td>
             </tr>
           ))}
