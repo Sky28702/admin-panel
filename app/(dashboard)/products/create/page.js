@@ -1,4 +1,5 @@
 "use client";
+import { v4 as uuidv4 } from "uuid";
 import { createFunction } from "@/app/backend/actions/productCreate";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -21,8 +22,14 @@ const createProduct = () => {
   };
 
   async function submit(data) {
-    // await console.log(data);
-    let result = await createFunction(data);
+    console.log(data);
+    const formData = new FormData();
+    formData.append("productName", data.productName);
+    formData.append("quantity", data.quantity);
+    formData.append("price", data.price);
+    formData.append("image", data.image);
+
+    let result = await createFunction(formData);
     console.log(data);
     console.log(result);
     toast.success("Product created successfully!");

@@ -57,8 +57,22 @@ function ViewContentProduct(props) {
               <td>{value}</td>
             </tr>
           ))}
-          <tr className="text-1xl font-medium">
-            <td>Actions:</td>
+
+          <tr>
+            <td className="text-1xl font-medium">Image:</td>
+            <td>
+              <div className="shadow shadow-slate-300 border border-slate-200 p-2 w-100 cursor-pointer mb-8 h-auto">
+                <img
+                  src={"/uploads/" + props.previewData.image}
+                  className="w-full h-auto object-contain max-h-60"
+                  alt="product image"
+                ></img>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td className="text-1xl font-medium">Actions:</td>
 
             <td className="flex flex-row text-indigo-500 gap-16">
               {" "}

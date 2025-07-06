@@ -1,15 +1,25 @@
 "use server";
-
+import fs from "fs";
+import path from "path";
+import { v4 as uuidv4 } from "uuid";
 import Product from "@/app/backend/models/product";
 import dbConnect from "@/app/backend/db/dbConnect";
 
-async function createFunction(data) {
+async function createFunction(formData) {
   await dbConnect();
+  const file = formData.get("image");
+  const extension = file.name.split(".").pop();
+
+  const fileName = uuidv4() + "." + extension;
+  const uploadPath = path.join(process.cwd(), "public", "uploads", fileName);
+  const buffer = Buffer.from(await file.arrayBuffer());
+  fs.writeFileSync(uploadPath, buffer);
 
   const product = new Product({
-    productName: data.productName,
-    quantity: data.quantity,
-    price: data.price,
+    productName: formData.get("productName"),
+    quantity: formData.get("quantity"),
+    price: formData.get("price"),
+    image: fileName,
   });
 
   await product.save();
