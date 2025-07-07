@@ -55,9 +55,11 @@ function TableRow(props) {
             <IconEye stroke={2} />
             <Link href={"products/view/" + props.id}> Preview</Link>
           </button>
-          <button href="/edit" className="flex hover:cursor-pointer">
-            <IconEdit stroke={2} />
-            Edit
+          <button className="flex flex-row hover:cursor-pointer">
+            <Link href={"products/edit/" + props.id} className="flex">
+              <IconEdit stroke={2} />
+              Edit
+            </Link>
           </button>
           <button onClick={openModal} className="flex hover:cursor-pointer">
             <IconTrash stroke={2} />

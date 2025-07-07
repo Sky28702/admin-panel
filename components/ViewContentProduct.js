@@ -53,23 +53,22 @@ function ViewContentProduct(props) {
         <tbody>
           {Object.entries(props.previewData).map(([key, value]) => (
             <tr key={key}>
-              <td className="text-1xl font-medium">{key}</td>
-              <td>{value}</td>
+              <td className="text-1xl font-medium">{key}:</td>
+              <td>
+                {key === "image" ? (
+                  <div className="shadow shadow-slate-300 border border-slate-200 p-2 w-100 cursor-pointer mb-8 h-auto">
+                    <img
+                      src={"/uploads/" + value}
+                      className="w-full h-auto object-contain max-h-60"
+                      alt="product image"
+                    />
+                  </div>
+                ) : (
+                  value
+                )}
+              </td>
             </tr>
           ))}
-
-          <tr>
-            <td className="text-1xl font-medium">Image:</td>
-            <td>
-              <div className="shadow shadow-slate-300 border border-slate-200 p-2 w-100 cursor-pointer mb-8 h-auto">
-                <img
-                  src={"/uploads/" + props.previewData.image}
-                  className="w-full h-auto object-contain max-h-60"
-                  alt="product image"
-                ></img>
-              </div>
-            </td>
-          </tr>
 
           <tr>
             <td className="text-1xl font-medium">Actions:</td>

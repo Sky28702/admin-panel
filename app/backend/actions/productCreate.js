@@ -46,4 +46,18 @@ async function deleteItem(id) {
   return deleteItem;
 }
 
-export { createFunction, allProducts, deleteItem, preViewProducts };
+async function updateProduct(id) {
+  const theProduct = await Product.findById(id);
+
+  return theProduct;
+
+  // i am fucked
+}
+
+export {
+  createFunction,
+  allProducts,
+  deleteItem,
+  preViewProducts,
+  updateProduct,
+};

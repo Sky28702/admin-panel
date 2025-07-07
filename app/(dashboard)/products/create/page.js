@@ -1,5 +1,5 @@
 "use client";
-import { v4 as uuidv4 } from "uuid";
+
 import { createFunction } from "@/app/backend/actions/productCreate";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -17,13 +17,21 @@ const createProduct = () => {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    setSelectedImage(file);
-    setValue("image", file); // Update form value with the file
-  };
 
+    const extension = file.name.split(".").pop();
+
+    if ((extension === "jpg", extension === "png", extension === "jpeg")) {
+      setSelectedImage(file);
+      setValue("image", file);
+    }
+
+    toast.error("Only image is allowed.");
+  };
   async function submit(data) {
     console.log(data);
     const formData = new FormData();
+    formData.append("id", props.previewData._id);
+
     formData.append("productName", data.productName);
     formData.append("quantity", data.quantity);
     formData.append("price", data.price);
