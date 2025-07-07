@@ -48,8 +48,7 @@ async function deleteItem(id) {
 
 async function updateProduct(id) {
   const theProduct = await Product.findById(id);
-
-  return theProduct;
+  return JSON.parse(JSON.stringify(theProduct));
 
   // i am fucked
 }

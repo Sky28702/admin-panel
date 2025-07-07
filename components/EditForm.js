@@ -26,8 +26,8 @@ function EditForm(props) {
   };
 
   async function submit(data) {
-    let result = await updateProduct();
-    console.log(props.previewData._id);
+    console.log(data);
+    const result = await updateProduct(props.id);
     console.log(result);
     toast.success("Product updated successfully!");
   }
@@ -93,9 +93,7 @@ function EditForm(props) {
               type="file"
               className="shadow shadow-slate-300 border border-slate-200 p-2 w-200 cursor-pointer mb-2 ml-24"
               onChange={handleImageChange}
-              {...register("image", {
-                required: "Image is required *",
-              })}
+              {...register("image")}
             />
 
             {errors.image && (
