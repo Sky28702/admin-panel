@@ -2,6 +2,7 @@
 import bcrypt from "bcryptjs";
 import User from "@/app/backend/models/userModel";
 import dbConnect from "@/app/backend/db/dbConnect";
+import { redirect } from "next/dist/server/api-utils";
 
 async function logIn(data) {
   await dbConnect();
@@ -25,6 +26,10 @@ async function logIn(data) {
     return {
       success: true,
       message: "Login successfull !",
+      user: {
+        userName: isUserExist.userName,
+        email: isUserExist.email,
+      },
     };
   } else {
     return {

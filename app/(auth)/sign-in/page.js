@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import { useState } from "react";
 import logIn from "@/app/backend/actions/login";
+import { redirect } from "next/navigation";
 
 const Login = () => {
   const [error, setError] = useState(false);
@@ -12,18 +13,23 @@ const Login = () => {
   async function submit(data) {
     // await console.log(data);
     let result = await logIn(data);
+    if (result.success) {
+      localStorage.setItem("Current User", JSON.stringify(result.user));
+      redirect("/");
+    }
+
     setError(result.success);
 
     // console.log(result);
-    console.log(result.message);
+    // console.log(result.message);
     setError(!result.success);
     setErrorMessage(result.message);
-    console.log(result);
+    // console.log(result);
   }
   return (
     <section>
-      <form className="pl-76" onSubmit={handleSubmit(submit)}>
-        <div className="flex flex-col items-center border border-none rounded-[4px] shadow shadow-slate-400 mt-76 text-center max-w-100 py-6">
+      <form className="" onSubmit={handleSubmit(submit)}>
+        <div className="flex flex-col items-center border border-none rounded-[4px] shadow shadow-slate-400 mt-66 text-center max-w-100 py-6 ml-180">
           <h1 className=" mb-10 font-bold text-[36px] text-blue-700 ">
             <u>Login</u>
           </h1>

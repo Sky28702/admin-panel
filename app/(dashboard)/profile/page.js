@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { previewUser } from "@/app/backend/actions/signup";
 import ProfileContent from "@/components/Profile";
 
