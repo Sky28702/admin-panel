@@ -1,5 +1,6 @@
 import { IconEye } from "@tabler/icons-react";
 import { allUsers } from "@/app/backend/actions/signup";
+import Link from "next/link";
 
 async function Users() {
   const allDataUsers = await allUsers();
@@ -22,10 +23,12 @@ async function Users() {
 
               <td className="flex flex-row text-indigo-500 gap-16">
                 {" "}
-                <button href="/preview" className="flex hover:cursor-pointer">
-                  <IconEye stroke={2} />
-                  Preview
-                </button>
+                <Link href={"users/preview/" + u.id}>
+                  <button className="flex hover:cursor-pointer">
+                    <IconEye stroke={2} />
+                    Preview
+                  </button>
+                </Link>
               </td>
             </tr>
           ))}

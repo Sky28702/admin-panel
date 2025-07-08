@@ -45,4 +45,9 @@ async function allUsers() {
   return allDataUsers;
 }
 
-export { signUp, allUsers };
+async function previewUser(id) {
+  const user = await User.findById(id);
+  return user;
+}
+
+export { signUp, allUsers, previewUser };

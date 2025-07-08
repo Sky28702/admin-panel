@@ -46,11 +46,32 @@ async function deleteItem(id) {
   return deleteItem;
 }
 
-async function updateProduct(id) {
-  const theProduct = await Product.findById(id);
-  return JSON.parse(JSON.stringify(theProduct));
+async function updateProduct(id, formData) {
+  let product = {
+    productName: formData.get("productName"),
+    quantity: formData.get("quantity"),
+    price: formData.get("price"),
+  };
 
-  // i am fucked
+  const file = formData.get("image");
+
+  if (file instanceof Blob) {
+    const extension = file.name.split(".").pop();
+    const fileName = uuidv4() + "." + extension;
+    const uploadPath = path.join(process.cwd(), "public", "uploads", fileName);
+    const buffer = Buffer.from(await file.arrayBuffer());
+    fs.writeFileSync(uploadPath, buffer);
+
+    product["image"] = fileName;
+  }
+
+  const updatedProduct = await Product.findByIdAndUpdate(id, product);
+
+  // const plainProduct = JSON.parse(JSON.stringify(updatedProduct));
+
+  return {
+    message: "Product updated successfully!",
+  };
 }
 
 export {

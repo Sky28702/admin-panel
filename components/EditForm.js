@@ -3,33 +3,42 @@ import toast, { Toaster } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { updateProduct } from "@/app/backend/actions/productCreate";
 import { useState } from "react";
+import { redirect, RedirectType } from "next/navigation";
 
 function EditForm(props) {
   const {
     register,
     handleSubmit,
+    setValue,
+    reset,
     formState: { errors },
   } = useForm();
   const [selectedImage, setSelectedImage] = useState();
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
+    const extension = file.name.split(".").pop().toLowerCase();
+    const allowedExtensions = ["jpg", "jpeg", "png"];
 
-    const extension = file.name.split(".").pop();
-
-    if ((extension === "jpg", extension === "png", extension === "jpeg")) {
+    if (allowedExtensions.includes(extension)) {
       setSelectedImage(file);
       setValue("image", file);
+    } else {
+      toast.error("Only JPG, JPEG, or PNG images are allowed.");
     }
-
-    toast.error("Only image is allowed.");
   };
 
   async function submit(data) {
-    console.log(data);
-    const result = await updateProduct(props.id);
+    const formData = new FormData();
+    formData.append("productName", data.productName);
+    formData.append("quantity", data.quantity);
+    formData.append("price", data.price);
+    formData.append("image", data.image);
+    const result = await updateProduct(props.id, formData);
+
     console.log(result);
     toast.success("Product updated successfully!");
+    redirect("/products", RedirectType.push);
   }
 
   return (
@@ -93,12 +102,7 @@ function EditForm(props) {
               type="file"
               className="shadow shadow-slate-300 border border-slate-200 p-2 w-200 cursor-pointer mb-2 ml-24"
               onChange={handleImageChange}
-              {...register("image")}
             />
-
-            {errors.image && (
-              <p className="text-red-500 mb-8 ml-38">{errors.image.message}</p>
-            )}
           </div>
         </div>
 
