@@ -74,10 +74,16 @@ async function updateProduct(id, formData) {
   };
 }
 
+async function countProducts() {
+  const totalProducts = await Product.countDocuments({});
+  return totalProducts;
+}
+
 export {
   createFunction,
   allProducts,
   deleteItem,
   preViewProducts,
   updateProduct,
+  countProducts,
 };

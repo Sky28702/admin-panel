@@ -1,10 +1,11 @@
 import SignupForm from "@/app/(auth)/sign-up/signupForm";
 
 import Link from "next/link";
+
 const Signup = () => {
   return (
     <>
-      <section className="border border-none rounded-[4px] shadow shadow-slate-400 mt-76 text-center max-w-100 py-6 ml-76 mb-4">
+      <section className="border border-none rounded-[4px] shadow shadow-slate-400 mt-66 text-center max-w-100 py-6 ml-180">
         <h1 className=" mb-10 font-bold text-[36px] text-blue-700 ">
           <u>Sign up</u>
         </h1>

@@ -50,4 +50,9 @@ async function previewUser(id) {
   return user;
 }
 
-export { signUp, allUsers, previewUser };
+async function countUsers() {
+  const totalUsers = await User.countDocuments({});
+  return totalUsers;
+}
+
+export { signUp, allUsers, previewUser, countUsers };

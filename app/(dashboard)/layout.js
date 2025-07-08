@@ -1,13 +1,22 @@
 "use client";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import { IconDashboard } from "@tabler/icons-react";
 import { IconUser } from "@tabler/icons-react";
 import { IconShoppingCartCopy } from "@tabler/icons-react";
 import { IconUserCircle } from "@tabler/icons-react";
+import { IconLogout } from "@tabler/icons-react";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const layout = ({ children }) => {
   const pathNmae = usePathname();
+
+  useEffect(() => {
+    const localData = localStorage.getItem("Current User");
+    if (!localData) {
+      redirect("sign-in");
+    }
+  }, []);
 
   const getClass = (path) => {
     const pathSegments = pathNmae.split("/");
@@ -47,6 +56,12 @@ const layout = ({ children }) => {
             <span>
               <Link href="/profile" className={getClass("/profile")}>
                 <IconUserCircle stroke={2} /> &nbsp; Profile
+              </Link>
+            </span>
+
+            <span>
+              <Link href="/logout" className={getClass("/logout")}>
+                <IconLogout stroke={2} /> &nbsp; Log out
               </Link>
             </span>
           </div>

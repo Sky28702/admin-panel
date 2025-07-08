@@ -1,9 +1,17 @@
 "use client";
 import { signUp } from "@/app/backend/actions/signup";
-import { useState } from "react";
+import { redirect } from "next/navigation";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
 const SignupForm = () => {
+  useEffect(() => {
+    const localData = localStorage.getItem("Current User");
+    if (localData) {
+      redirect("/");
+    }
+  }, []);
+
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
