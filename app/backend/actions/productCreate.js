@@ -31,22 +31,26 @@ async function createFunction(formData) {
   };
 }
 async function allProducts() {
+  await dbConnect();
   const allDataProduct = await Product.find({}).sort({ createdAt: -1 });
   return allDataProduct;
 }
 
 async function preViewProducts(id) {
+  await dbConnect();
   const product = await Product.findById(id);
   return product;
 }
 
 async function deleteItem(id) {
+  await dbConnect();
   await Product.findByIdAndDelete(id);
   console.log(`Item ${id} deleted`);
   return deleteItem;
 }
 
 async function updateProduct(id, formData) {
+  await dbConnect();
   let product = {
     productName: formData.get("productName"),
     quantity: formData.get("quantity"),
@@ -75,6 +79,7 @@ async function updateProduct(id, formData) {
 }
 
 async function countProducts() {
+  await dbConnect();
   const totalProducts = await Product.countDocuments({});
   return totalProducts;
 }

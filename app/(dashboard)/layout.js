@@ -5,6 +5,7 @@ import { IconUser } from "@tabler/icons-react";
 import { IconShoppingCartCopy } from "@tabler/icons-react";
 import { IconUserCircle } from "@tabler/icons-react";
 import { IconLogout } from "@tabler/icons-react";
+import { IconUsersGroup } from "@tabler/icons-react";
 import Link from "next/link";
 import { useEffect } from "react";
 
@@ -50,6 +51,13 @@ const layout = ({ children }) => {
               <Link href="/users" className={getClass("/users")}>
                 <IconUser stroke={2} />
                 &nbsp; Users
+              </Link>
+            </span>
+
+            <span>
+              <Link href="/members" className={getClass("/members")}>
+                <IconUsersGroup stroke={2} />
+                &nbsp; Members
               </Link>
             </span>
 
