@@ -1,4 +1,5 @@
 "use client";
+import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -8,16 +9,20 @@ function MembersCreate() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   async function submit(data) {
     const res = await createMember(data);
     console.log(res);
+    toast.success("Member Successfully Created!");
+    reset();
   }
 
   return (
     <>
+      <Toaster />
       <section>
         <h1 className="text-3xl mb-2 font-medium">Create Members</h1>
 

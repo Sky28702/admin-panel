@@ -14,4 +14,26 @@ async function createMember(data) {
   console.log(member);
   return member.toString();
 }
-export { createMember };
+
+async function deleteMember(id) {
+  const deletedMember = Member.findByIdAndDelete(id);
+  console.log(`"member dlt"$ deletedMember`);
+  return deletedMember;
+}
+
+async function updateMember(id, formData) {
+  await dbConnect();
+  let member = {
+    memberName: formData.get("memberName"),
+    gender: formData.get("gender"),
+  };
+
+  // let member = {
+  //   memberName: data.memberName,
+  //   gender: data.gender,
+  // };
+  await Member.findByIdAndUpdate(id, member);
+  return updateMember;
+}
+
+export { createMember, deleteMember, updateMember };
