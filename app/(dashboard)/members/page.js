@@ -14,7 +14,7 @@ function MembersTable() {
         );
         console.log(axios.get("https://dull-wasps-appear.loca.lt/members/all"));
 
-        setAllMembers(res.data);
+        setAllMembers(res);
       } catch (error) {
         console.error(error);
       }
