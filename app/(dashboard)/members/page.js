@@ -1,16 +1,26 @@
+"use client";
 import Link from "next/link";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
-async function MembersTable() {
-  async function getMember() {
-    try {
-      const res = await axios.get("http://localhost:8000/members/all");
-      console.log(res);
-      return res;
-    } catch (error) {
-      console.error(error);
+function MembersTable() {
+  const [allMembers, setAllMembers] = useState([]);
+
+  useEffect(() => {
+    async function getMember() {
+      try {
+        const res = await axios.get(
+          "https://dull-wasps-appear.loca.lt/members/all"
+        );
+        console.log(axios.get("https://dull-wasps-appear.loca.lt/members/all"));
+
+        setAllMembers(res.data);
+      } catch (error) {
+        console.error(error);
+      }
     }
-  }
+    getMember();
+  }, []);
 
   return (
     <>
@@ -28,8 +38,8 @@ async function MembersTable() {
             </tr>
           </thead>
           <tbody>
-            {getMember.map((props) => (
-              <tr key={member._id} className="hover:bg-gray-50">
+            {allMembers.map((props) => (
+              <tr key={props._id} className="hover:bg-gray-50">
                 <td className="border px-4 py-2">{props.memberName}</td>
                 <td className="border px-4 py-2">{props.gender}</td>
               </tr>
