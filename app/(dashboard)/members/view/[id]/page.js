@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function ViewMembers({ params }) {
-  let prisk = "holy";
+  let prisk = "ho";
   const [allMembers, setAllMembers] = useState({});
 
   useEffect(() => {
